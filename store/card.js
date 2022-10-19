@@ -1,5 +1,5 @@
 export const state = () => ({
-  maxCardCounts: 20,
+  maxCardCounts: 4,
   cards: [],
   showdUpCards: [],
   score: 0,
@@ -8,7 +8,6 @@ export const state = () => ({
 
 export const getters = {
   getCardPack(state) {
-    //console.log('getters getCardPack', state.cards)
     return state.cards;
   },
   getScore(state){
@@ -24,7 +23,6 @@ export const getters = {
 
 export const mutations = {
   setCardPack: (state, credentials) => {
-    //console.log('mutations setCardPack',credentials)
     state.cards = credentials;
   },
   incrementScore(state) {

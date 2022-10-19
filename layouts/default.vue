@@ -2,30 +2,29 @@
   <v-app>
     <v-app-bar
       class="d-flex justify-center"
-      :clipped-left="clipped"
       color="#CFD8DC"
       fixed
       app
     >
-      <v-toolbar-title class="font-weight-bold mr-5">Találd meg a párokat</v-toolbar-title>
+      <v-toolbar-title class="font-weight-bold mr-5 black--text c-font-size">Találd meg a párokat</v-toolbar-title>
       <v-toolbar-title>
         <v-chip color="#607D8B" text-color="#ffffff">Pontszám: {{ $store.getters["card/getScore"] }}</v-chip>
       </v-toolbar-title>
       <v-toolbar-title>
         <v-col cols="12" class="justify-start">
-          <v-btn color="primary" @click="callResetGame">Új játék</v-btn>
+          <c-dialog :dialog-title="!$store.state.card.gameOver ? 'Biztos új játékot kezdesz?' : 'Új játék'"
+                    button-label="Új játék"
+                    v-on:action="callResetGame"/>
         </v-col>
       </v-toolbar-title>
     </v-app-bar>
     <v-main>
-      <v-container fluid>
-        <Nuxt />
-      </v-container>
+      <Nuxt />
     </v-main>
     <v-footer
-      :absolute="!fixed"
+      absolute
       app
-      color="#CFD8DC"
+      class="black--text"
     >
       <span>&copy; {{ new Date().getFullYear() }} Kártya párkereső</span>
     </v-footer>
@@ -34,6 +33,22 @@
 
 <script>
 export default {
-  name: 'DefaultLayout'
+  methods: {
+    withConfirm(text){
+      if(confirm(text)){
+        this.callResetGame();
+      }
+    }
+  }
 }
 </script>
+
+<style scoped>
+@media only screen and (max-width: 480px) {
+  .c-font-size {
+    font-size: 70%!important;
+  }
+}
+</style>
+
+
