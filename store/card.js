@@ -1,5 +1,5 @@
 export const state = () => ({
-  maxCardCounts: 4,
+  maxCardCounts: 20,
   cards: [],
   showdUpCards: [],
   score: 0,
