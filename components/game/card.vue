@@ -12,7 +12,7 @@ export default {
   props: {
     image: {
       type: String,
-      default(){
+      default() {
         return '';
       },
     },
@@ -24,23 +24,23 @@ export default {
     },
     id: {
       type: Number,
-      default(){
+      default() {
         return 0;
       }
-    }
+    },
   },
   methods: {
-    checkShowUp(){
-      if(!this.showUp){
+    checkShowUp() {
+      if (!this.showUp) {
         this.$emit('show-this-up', this.id)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
-.un-visible{
+.un-visible {
   z-index: -1;
 }
 </style>
